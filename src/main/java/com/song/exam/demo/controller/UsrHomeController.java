@@ -12,6 +12,12 @@ import com.song.exam.demo.vo.Article;
 @Controller
 public class UsrHomeController {
 
+	@RequestMapping("/usr/home/main")
+	@ResponseBody
+	public String getString() {
+		return "안녕하세요";
+	}
+	
 	@RequestMapping("/usr/home/getArticle")
 	@ResponseBody
 	public Article getArticle() {
