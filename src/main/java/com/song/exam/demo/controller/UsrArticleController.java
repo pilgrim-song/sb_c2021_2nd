@@ -11,22 +11,38 @@ import com.song.exam.demo.vo.Article;
 
 @Controller
 public class UsrArticleController {
-	private int articelsLastId;
+	private int articlesLastId;
 	private List<Article> articles;
 	
 	public UsrArticleController() {
-		articelsLastId = 0;
+		articlesLastId = 0;
 		articles = new ArrayList<>();
+		
+		// 프로그램 시작하자마자 데이터 생성(생성자에 포함되어서)
+		makeTestData();
+	}
+
+	private void makeTestData() {
+		for (int i = 1; i <=10; i++) {
+			int id = articlesLastId + 1;
+			String title = "제목" + i;
+			String body = "내용" + i;
+			Article article = new Article(id, title, body);
+			
+			articles.add(article);
+			articlesLastId = id;
+		}
+		
 	}
 
 	@RequestMapping("/usr/article/doAdd")
 	@ResponseBody
 	public Article doAdd(String title, String body) {
-		int id = articelsLastId + 1;
+		int id = articlesLastId + 1;
 		Article article = new Article(id, title, body);
 		
 		articles.add(article);
-		articelsLastId++;
+		articlesLastId++;
 		
 		return article;
 	}
