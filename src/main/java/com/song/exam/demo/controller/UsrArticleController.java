@@ -3,15 +3,20 @@ package com.song.exam.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.song.exam.demo.service.ArticleService;
 import com.song.exam.demo.vo.Article;
 
 @Controller
 public class UsrArticleController {
+	
 	// 인스턴스 변수 시작
+	@Autowired
+	private ArticleService articleService;
 	private int articlesLastId;
 	private List<Article> articles;
 	// 인스턴스 변수 끝
@@ -77,7 +82,6 @@ public class UsrArticleController {
 		article.setTitle(title);
 		article.setBody(body);	
 	}
-	
 	// 액션 메서드 끝
 	
 	@RequestMapping("/usr/article/getArticles")
