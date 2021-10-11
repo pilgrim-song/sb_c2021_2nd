@@ -70,6 +70,14 @@ public class UsrArticleController {
 		return article;
 	}
 	
+
+	private void modifyArticle(int id, String title, String body) {
+		Article article = getArticle(id);
+		
+		article.setTitle(title);
+		article.setBody(body);	
+	}
+	
 	// 액션 메서드 끝
 	
 	@RequestMapping("/usr/article/getArticles")
@@ -91,6 +99,21 @@ public class UsrArticleController {
 		
 		return id + "번 게시물을 삭제 하였습니다.";
 	}
+	
+	@RequestMapping("/usr/article/doModify")
+	@ResponseBody
+	public String doMidify(int id, String title, String body) {
+		Article article = getArticle(id);
+		
+		if (article == null) {
+			return id + "번 게시물이 존재하지 않습니다.";
+		}
+		
+		modifyArticle(id, title, body);
+		
+		return id + "번 게시물을 수정 하였습니다.";
+	}
+
 
 
 
