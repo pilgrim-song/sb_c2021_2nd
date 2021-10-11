@@ -86,6 +86,17 @@ public class UsrArticleController {
 		return articles;
 	}
 	
+	@RequestMapping("/usr/article/getArticle")
+	@ResponseBody
+	public Object getArticleAction(int id) {		// Object를 사용한 것은 return 타입이 String과 Article 두 타입으로 가장 상위 타입인 Object를 사용
+		Article article = getArticle(id);
+		if (article == null) {
+			return id + "번 게시물은 존재하지 않습니다.";
+		}
+		
+		return article;
+	}
+	
 	@RequestMapping("/usr/article/doDelete")
 	@ResponseBody
 	public String doDelete(int id) {
