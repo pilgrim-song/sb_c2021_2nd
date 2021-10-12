@@ -11,12 +11,11 @@ import com.song.exam.demo.vo.Article;
 
 @Service
 public class ArticleService {
+	
 	private ArticleRepository articleRepository;
 	
 	public ArticleService(ArticleRepository articleRepository) {
 		this.articleRepository = articleRepository;
-		
-		makeTestData();
 	}
 
 	public void makeTestData() {
@@ -31,11 +30,11 @@ public class ArticleService {
 		articleRepository.writeArticle(title, body);	
 	}
 
-	public List<Article> getArticales() {
-		return articleRepository.getArticales();
+	public List<Article> getArticles() {
+		return articleRepository.getArticles();
 	}
 
-	public Article getArticale(int id) {
+	public Article getArticle(int id) {
 		return articleRepository.getArticle(id);
 	}
 
@@ -46,6 +45,32 @@ public class ArticleService {
 	public void modify(int id, String title, String body) {
 		articleRepository.modify(id, title, body);
 	}
+
+	/*
+	 * private ArticleRepository articleRepository;
+	 * 
+	 * public ArticleService(ArticleRepository articleRepository) {
+	 * this.articleRepository = articleRepository;
+	 * 
+	 * makeTestData(); }
+	 * 
+	 * public void makeTestData() { for (int i=1; i <=10; i++) { String title =
+	 * "제목 " + i; String body = "내용" +i; writeArticle(title, body); } }
+	 * 
+	 * public void writeArticle(String title, String body) {
+	 * articleRepository.writeArticle(title, body); }
+	 * 
+	 * public List<Article> getArticales() { return
+	 * articleRepository.getArticales(); }
+	 * 
+	 * public Article getArticale(int id) { return articleRepository.getArticle(id);
+	 * }
+	 * 
+	 * public void delete(int id) { articleRepository.delete(id); }
+	 * 
+	 * public void modify(int id, String title, String body) {
+	 * articleRepository.modify(id, title, body); }
+	 */
 	
 	/*
 	 * private ArticleRepository articleRepository;
