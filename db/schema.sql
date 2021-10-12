@@ -18,3 +18,5 @@ title = '제목3',
 body = '내용3';
 
 SELECT * FROM article;
+
+SELECT LAST_INSERT_ID();  # 마지막 인서트된 ID

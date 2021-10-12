@@ -3,6 +3,7 @@ package com.song.exam.demo.repository;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -15,7 +16,8 @@ import com.song.exam.demo.vo.Article;
 public interface ArticleRepository {
 	
 	// INSERT INTO article SET regDate = NOW(), updateDate = NOW(), title = ?, body = ";
-	public void writeArticle(String title, String body);
+	@Insert("INSERT INTO article SET regDate = NOW(), updateDate = NOW(), title = #{title}, body = #{body}")
+	public void writeArticle(@Param("title") String title, @Param("body") String body);
 
 	// SELECT * FROM article WHERE id = ?
 	@Select("SELECT * FROM article WHERE id = #{id}")
@@ -32,6 +34,9 @@ public interface ArticleRepository {
 	// SELECT * FROM article ORDER BY id DESC;
 	@Select("SELECT * FROM article ORDER BY #{id} DESC")
 	public List<Article> getArticles();
+
+	@Select("SELECT LAST_INSERT_ID()")
+	public int getLastInsertId();
 	
 	/*
 	 * private List<Article> articles; private int lastId;
