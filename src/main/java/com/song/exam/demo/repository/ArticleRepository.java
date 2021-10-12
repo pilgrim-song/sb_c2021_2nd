@@ -2,9 +2,11 @@ package com.song.exam.demo.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.song.exam.demo.vo.Article;
 
@@ -16,16 +18,19 @@ public interface ArticleRepository {
 	public void writeArticle(String title, String body);
 
 	// SELECT * FROM article WHERE id = ?
-	@Select("select * from article where id = #{id}")
+	@Select("SELECT * FROM article WHERE id = #{id}")
 	public Article getArticle(@Param("id") int id);
 
 	// DELETE FROM article WHERE id = ?
-	public void delete(int id);
+	@Delete("DELETE FROM article WHERE id = #{id}")
+	public void delete(@Param("id") int id);
 
 	// UPDATE article SET title = ?, body = ?, updateDate = NOW() WHERE id = ?;
-	public void modify(int id, String title, String body);
+	@Update("UPDATE article SET title = #{title}, body = #{body}, updateDate = NOW() WHERE id = #{id}")
+	public void modify(@Param("id") int id, @Param("title") String title, @Param("body") String body);
 	
 	// SELECT * FROM article ORDER BY id DESC;
+	@Select("SELECT * FROM article ORDER BY #{id} DESC")
 	public List<Article> getArticles();
 	
 	/*
