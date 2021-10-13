@@ -9,7 +9,8 @@
 	<insert id="join">
 		INSERT INTO member
 		SET regDate = NOW(),
-		updateDate = NOW(),
+		updateDate =
+		NOW(),
 		loginId = #{loginId},
 		loginPw =#{loginPw},
 		name = #{name},
@@ -17,5 +18,15 @@
 		cellphoneNo = #{cellphoneNo},
 		email = #{email}
 	</insert>
+
+	<select id="getLastInsertId" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+	
+		<select id="getMemberById" resultType="Member">
+		SELECT *
+		FROM member
+		WHERE id = #{id}
+	</select>
 
 </mapper>
