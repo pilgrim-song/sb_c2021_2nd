@@ -15,6 +15,19 @@ import com.song.exam.demo.vo.Article;
 @Mapper
 public interface ArticleRepository {
 	
+	public void writeArticle(@Param("title") String title, @Param("body") String body);
+
+	public Article getArticle(@Param("id") int id);
+
+	public void delete(@Param("id") int id);
+
+	public void modifyArticle(@Param("id") int id, @Param("title") String title, @Param("body") String body);
+	
+	public List<Article> getArticles();
+
+	public int getLastInsertId();
+	
+	/*
 	// INSERT INTO article SET regDate = NOW(), updateDate = NOW(), title = ?, body = ";
 	@Insert("INSERT INTO article SET regDate = NOW(), updateDate = NOW(), title = #{title}, body = #{body}")
 	public void writeArticle(@Param("title") String title, @Param("body") String body);
@@ -37,6 +50,7 @@ public interface ArticleRepository {
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();
+	*/
 	
 	/*
 	 * private List<Article> articles; private int lastId;
