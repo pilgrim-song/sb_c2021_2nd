@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.song.exam.demo.service.MemberService;
+import com.song.exam.demo.util.Ut;
 import com.song.exam.demo.vo.Article;
 import com.song.exam.demo.vo.Member;
 
@@ -24,23 +25,23 @@ public class UsrMemberController {
 	@ResponseBody 
 	public Object doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email) {
 		
-		if (loginId == null) {
+		if (Ut.empty(loginId)) {
 			return "loginId(을)를 입력해주세요.";
 		}
 		
-		if (loginPw == null) {
+		if (Ut.empty(loginPw) {
 			return "loginPw(을)를 입력해주세요.";
 		}
-		if (name == null) {
+		if (Ut.empty() {
 			return "name(을)를 입력해주세요.";
 		}
-		if (nickname == null) {
+		if (Ut.empty() {
 			return "nickname(을)를 입력해주세요.";
 		}
-		if (cellphoneNo == null) {
+		if (Ut.empty(cellphoneNo) {
 			return "cellphoneNo(을)를 입력해주세요.";
 		}
-		if (email == null) {
+		if (Ut.empty() {
 			return "email(을)를 입력해주세요.";
 		}
 		
