@@ -15,4 +15,6 @@ public interface MemberRepository {
 
 	Member getMemberById(@Param("id") int id);
 
+	Member getMemberByLoginId(@Param("loginId") String loginId);
+
 }

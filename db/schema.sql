@@ -1,5 +1,5 @@
 # 사용자 생성
-GRANT ALL PRIVILEGES ON *.* TO sbsst@`%` IDENTIFIED BY 'sbs123412'; -> 바뀌었음
+GRANT ALL PRIVILEGES ON *.* TO sbsst@`%` IDENTIFIED BY 'sbs123412';
 CREATE USER  sbsst@`%` IDENTIFIED BY 'sbs123412';
 GRANT ALL PRIVILEGES ON *.* TO sbsst@`%`;
 
@@ -33,7 +33,7 @@ updateDate = NOW(),
 title = '제목2',
 body = '내용2';
 
-articleINSERT INTO article
+INSERT INTO article
 SET regDate = NOW(),
 updateDate = NOW(),
 title = '제목3',
