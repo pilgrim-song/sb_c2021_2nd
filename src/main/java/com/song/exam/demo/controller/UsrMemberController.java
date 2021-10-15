@@ -48,11 +48,12 @@ public class UsrMemberController {
 		int id = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
 		
 		if (id == -1) {		// 리턴값이 int 인데 여기에 성공시 해당 id, 아이디가 있어 실패하면 -1 로 리턴
-			return "해당 로그인 아이디는 이미 사용중입니다.";
+			//return "해당 로그인 아이디(" + loginId + ")는 이미 사용중입니다.";
+			return Ut.f("해당 로그인 아이디(%s)는 이미 사용중입니다.", loginId);
 		}
 		
 		if (id == -2) {		// 리턴값이 int 인데 여기에 성공시 해당 id, 아이디가 있어 실패하면 -1 로 리턴
-			return "해당 이름과 이메일은 이미 사용중입니다.";
+			return Ut.f("해당 이름(%s)과 이메일(%s)은 이미 사용중입니다.", name, nickname);
 		}
 
 		Member member = memberService.getMemberById(id);

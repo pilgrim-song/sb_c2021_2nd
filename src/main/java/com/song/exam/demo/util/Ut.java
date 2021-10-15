@@ -15,6 +15,10 @@ public class Ut {
 		
 		return str.trim().length() == 0;		// 좌우 공백을 제거하고 길이가 0이다 그러면 비어있다라고 본다
 	}
+
+	public static String f(String format, Object... args) {
+		return String.format(format, args);
+	}
 	
 	
 
