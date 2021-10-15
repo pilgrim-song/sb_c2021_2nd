@@ -11,6 +11,7 @@ import com.song.exam.demo.service.MemberService;
 import com.song.exam.demo.util.Ut;
 import com.song.exam.demo.vo.Article;
 import com.song.exam.demo.vo.Member;
+import com.song.exam.demo.vo.ResultData;
 
 @Controller
 public class UsrMemberController {
@@ -23,41 +24,40 @@ public class UsrMemberController {
 
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody 
-	public Object doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email) {
+	public ResultData doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email) {
 		
 		if (Ut.empty(loginId)) {
-			return "loginId(을)를 입력해주세요.";
+			return ResultData.from("F-1", "loginId(을)를 입력해주세요.");
 		}
 		if (Ut.empty(loginPw)) {
-			return "loginPw(을)를 입력해주세요.";
+			return ResultData.from("F-1", "loginPw(을)를 입력해주세요.");
 		}
 		if (Ut.empty(name)) {
-			return "name(을)를 입력해주세요.";
+			return ResultData.from("F-1", "name(을)를 입력해주세요.");
 		}
 		if (Ut.empty(nickname)) {
-			return "nickname(을)를 입력해주세요.";
+			return ResultData.from("F-1", "nickname(을)를 입력해주세요.");
 		}
 		if (Ut.empty(cellphoneNo)) {
-			return "cellphoneNo(을)를 입력해주세요.";
+			return ResultData.from("F-1", "cellphoneNo(을)를 입력해주세요.");
 		}
 		if (Ut.empty(email)) {
-			return "email(을)를 입력해주세요.";
+			return ResultData.from("F-1", "email(을)를 입력해주세요.");
 		}
 		
-		int id = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
+		// joinRd 값에 들어 있는 것은 3개다
+		// S-1
+		// 회원가입이 완료되었습니다.
+		// 번호 : 7, 8 번 등
+		ResultData joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
 		
-		if (id == -1) {		// 리턴값이 int 인데 여기에 성공시 해당 id, 아이디가 있어 실패하면 -1 로 리턴
-			//return "해당 로그인 아이디(" + loginId + ")는 이미 사용중입니다.";
-			return Ut.f("해당 로그인 아이디(%s)는 이미 사용중입니다.", loginId);
-		}
-		
-		if (id == -2) {		// 리턴값이 int 인데 여기에 성공시 해당 id, 아이디가 있어 실패하면 -1 로 리턴
-			return Ut.f("해당 이름(%s)과 이메일(%s)은 이미 사용중입니다.", name, nickname);
+		if (joinRd.isFail()) {
+			return joinRd;
 		}
 
-		Member member = memberService.getMemberById(id);
+		Member member = memberService.getMemberById((int)joinRd.getData1());
 		
-		return member;
+		return ResultData.newData(joinRd, member);		// 위에서 'S-1', '회원가입이 완료되었습니다.' 는 그대로 사용하고 '번호' 를 바꾸고 싶어서 : 기존 보고서(joinRd)에 데이터를 이것만(member) 바꿔서 한다
 	}
 
 }
