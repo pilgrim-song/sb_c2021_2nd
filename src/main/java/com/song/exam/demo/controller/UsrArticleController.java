@@ -19,6 +19,7 @@ public class UsrArticleController {
 		this.articleService = articleService;
 	}
 	
+	// 액션 메서드 시작
 	@RequestMapping("/usr/article/doAdd")
 	@ResponseBody
 	public ResultData doAdd(String title, String body) {
@@ -29,12 +30,16 @@ public class UsrArticleController {
 			return ResultData.from("F-2", "body(을)를 입력해주세요.");
 		}
 		
-		ResultData writeArticleRd = articleService.writeArticle(title, body);
-		int id = (int)writeArticleRd.getData1();
+		// 생성된 데이터는
+		// S-1
+		// 4번 게시물이 생성되었습니다
+		// 4번
+		ResultData<Integer> writeArticleRd = articleService.writeArticle(title, body);
+		int id = writeArticleRd.getData1();
 		
 		Article article = articleService.getArticle(id);
 		
-		return ResultData.from(writeArticleRd.getResultCode(), writeArticleRd.getMsg(), article);
+		return ResultData.newData(writeArticleRd, article);
 	}
 	
 	@RequestMapping("/usr/article/getArticles")
