@@ -2,7 +2,6 @@ package com.song.exam.demo.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,8 +39,10 @@ public class UsrArticleController {
 	
 	@RequestMapping("/usr/article/getArticles")
 	@ResponseBody
-	public List<Article> getArticles() {
-		return articleService.getArticles();
+	public ResultData getArticles() {
+		List<Article> articles =  articleService.getArticles();
+		
+		return ResultData.from("S-1", "게시물 리스트 입니다.", articles);
 	}
 	
 	@RequestMapping("/usr/article/getArticle")
