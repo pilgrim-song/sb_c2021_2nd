@@ -29,13 +29,20 @@
 		WHERE
 		M.id = #{id}
 	</select>
-	
 
 	<select id="getMemberByLoginId" resultType="Member">
 		SELECT *
 		FROM member AS M
 		WHERE
 		M.loginId = #{loginId}
+	</select>
+	
+	<select id="getMemberByNameAndEmail" resultType="Member">
+		SELECT *
+		FROM member AS M
+		WHERE
+		M.name = #{name}
+		AND M.email = #{email}
 	</select>
 
 

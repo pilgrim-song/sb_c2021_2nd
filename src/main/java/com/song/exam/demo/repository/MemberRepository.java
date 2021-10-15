@@ -17,4 +17,6 @@ public interface MemberRepository {
 
 	Member getMemberByLoginId(@Param("loginId") String loginId);
 
+	Member getMemberByNameAndEmail(@Param("name") String name, @Param("email") String email);
+
 }
