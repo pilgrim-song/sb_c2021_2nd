@@ -19,17 +19,16 @@ public class MemberService {
 		Member oldMember = getMemberByLoginId(loginId);
 		
 		// 로그인 아이디 중복 체크
-		if (oldMember != null) {	// null이 아니면 있다 : != null
+		if (oldMember != null) {	// oldMember가 null이 아니면 있다 : != null
 			return -1;
 		}
 		
 		oldMember = getMemberByNameAndEmail(name, email);
 				
 		// 아이디+이메일 중복 체크
-		if (oldMember != null) {	// null이 아니면 있다 : != null
+		if (oldMember != null) {	// oldMember가 null이 아니면 있다 : != null
 			return -2;
-		}
-		
+		}		
 		
 		memberRepository.join(loginId, loginPw, name, nickname, cellphoneNo, email);
 		return memberRepository.getLastInsertId();

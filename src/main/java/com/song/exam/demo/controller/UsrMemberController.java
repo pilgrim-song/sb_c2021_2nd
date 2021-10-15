@@ -28,7 +28,6 @@ public class UsrMemberController {
 		if (Ut.empty(loginId)) {
 			return "loginId(을)를 입력해주세요.";
 		}
-		
 		if (Ut.empty(loginPw)) {
 			return "loginPw(을)를 입력해주세요.";
 		}

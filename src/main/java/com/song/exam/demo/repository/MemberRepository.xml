@@ -45,5 +45,4 @@
 		AND M.email = #{email}
 	</select>
 
-
 </mapper>
