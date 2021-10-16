@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Member {
-	
 	private int id;
 	private String regDate;
 	private String updateDate;
@@ -21,4 +20,4 @@ public class Member {
 	private String email;
 	private boolean delStatus;
 	private String delDate;
-	}
+}

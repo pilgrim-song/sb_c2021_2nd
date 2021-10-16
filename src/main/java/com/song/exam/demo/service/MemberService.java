@@ -16,7 +16,7 @@ public class MemberService {
 		this.memberRepository = memberRepository;
 	}
 
-	public ResultData join(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email) {  // 리턴하는 것이 가입된 회원의 번호이다 : int
+	public ResultData<Integer> join(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email) {  // 리턴하는 것이 가입된 회원의 번호이다 : int
 		
 		Member oldMember = getMemberByLoginId(loginId);
 		
