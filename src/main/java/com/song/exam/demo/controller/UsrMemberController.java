@@ -58,6 +58,23 @@ public class UsrMemberController {
 		return ResultData.newData(joinRd, member);		// 위에서 'S-1', '회원가입이 완료되었습니다.' 는 그대로 사용하고 '번호' 를 바꾸고 싶어서 : 기존 보고서(joinRd)에 데이터를 이것만(member) 바꿔서 한다
 	}
 	
+	@RequestMapping("/usr/member/doLogout")
+	@ResponseBody 
+	public ResultData doLogout(HttpSession httpSession) {
+		boolean isLogined = false;
+		
+		if (httpSession.getAttribute("loginedMemberId") == null) {
+			isLogined = true;
+		}
+		if (isLogined) {
+			return ResultData.from("S-1", "이미 로그아웃 상태입니다.");
+		}
+		
+		httpSession.removeAttribute("loginedMemberId");
+		
+		return ResultData.from("S-2", "로그아웃 되었습니다.");
+	}
+	
 	@RequestMapping("/usr/member/doLogin")
 	@ResponseBody 
 	public ResultData doLogin(HttpSession httpSession, String loginId, String loginPw) {
