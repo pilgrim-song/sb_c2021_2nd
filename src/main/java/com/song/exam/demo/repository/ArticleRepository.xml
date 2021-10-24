@@ -45,7 +45,7 @@
 		WHERE id = #{id}
 	</update> -->
 <!-- 	동적 SQL -->
-	<update id="modifyArticle">
+	<update id="modifyArticle" >
 		UPDATE article
 		<set>
 			<if test="title != null and title !=' ' "> <!--  http://localhost:8011/usr/article/doModify?title=zzz : title is NULL-->

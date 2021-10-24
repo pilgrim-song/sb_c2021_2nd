@@ -55,7 +55,7 @@ public class UsrMemberController {
 
 		Member member = memberService.getMemberById(joinRd.getData1());
 		
-		return ResultData.newData(joinRd, member);		// 위에서 'S-1', '회원가입이 완료되었습니다.' 는 그대로 사용하고 '번호' 를 바꾸고 싶어서 : 기존 보고서(joinRd)에 데이터를 이것만(member) 바꿔서 한다
+		return ResultData.newData(joinRd, "member", member);		// 위에서 'S-1', '회원가입이 완료되었습니다.' 는 그대로 사용하고 '번호' 를 바꾸고 싶어서 : 기존 보고서(joinRd)에 데이터를 이것만(member) 바꿔서 한다
 	}
 	
 	@RequestMapping("/usr/member/doLogout")

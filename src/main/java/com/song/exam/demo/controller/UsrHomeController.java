@@ -20,25 +20,23 @@ public class UsrHomeController {
 		return "안녕하세요";
 	}
 	
-	@RequestMapping("/usr/home/getArticle")
-	@ResponseBody
-	public Article getArticle() {
-		Article article = new Article(1, "제목1", "내용1");
-	
-		return article;
-	}
-	
-	@RequestMapping("/usr/home/getArticles")
-	@ResponseBody
-	public List<Article> getArticles() {
-		Article article1 = new Article(1, "제목1", "내용1");
-		Article article2 = new Article(2, "제목2", "내용2");
-		
-		java.util.List<Article> list = new ArrayList<>();
-		list.add(article1);
-		list.add(article2);
-		
-		return list;
-	}
+	/*
+	 * @RequestMapping("/usr/home/getArticle")
+	 * 
+	 * @ResponseBody public Article getArticle() { Article article = new Article(1,
+	 * "제목1", "내용1");
+	 * 
+	 * return article; }
+	 * 
+	 * @RequestMapping("/usr/home/getArticles")
+	 * 
+	 * @ResponseBody public List<Article> getArticles() { Article article1 = new
+	 * Article(1, "제목1", "내용1"); Article article2 = new Article(2, "제목2", "내용2");
+	 * 
+	 * java.util.List<Article> list = new ArrayList<>(); list.add(article1);
+	 * list.add(article2);
+	 * 
+	 * return list; }
+	 */
 
 }
