@@ -1,2 +1,9 @@
 리파지토리가 서비스에게 응답은 일반 객체
 서비스가 컨트롤러에게 응답할 때는 
+
+
+
+Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
+해결방법은 servlet-context.xml파일의 db를 연결하는 value를 첫번째줄에서 두번째 줄로 변경한다.
+<beans:property name="driverClassName" value="com.mysql.jdbc.Driver">
+<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver">
